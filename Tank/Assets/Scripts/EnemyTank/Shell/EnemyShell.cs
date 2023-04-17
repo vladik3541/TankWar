@@ -11,7 +11,6 @@ public class EnemyShell : MonoBehaviour
     [SerializeField] private AudioSource _ExplosionAudio;
     [SerializeField] private float _Damage;
     [SerializeField] private float _MaxLifeTime = 2f;
-    [SerializeField] private float _ExplosionForce = 1000f;
     [SerializeField] private float _ExplosionRadius = 5f; 
 
     private void Start ()
@@ -33,9 +32,6 @@ public class EnemyShell : MonoBehaviour
             // If they don't have a rigidbody, go on to the next collider.
             if (!targetRigidbody)
                 continue;
-
-            // Add an explosion force.
-            targetRigidbody.AddExplosionForce (_ExplosionForce, transform.position, _ExplosionRadius);
 
             // Find the TankHealth script associated with the rigidbody.
             HealthPlayer targetHealth = targetRigidbody.GetComponent<HealthPlayer> ();
